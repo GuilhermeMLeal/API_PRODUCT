@@ -34,7 +34,4 @@ public class Product {
 		this.price = request.price();
 	}
 	
-	public Product() {
-		
-	}
 }
