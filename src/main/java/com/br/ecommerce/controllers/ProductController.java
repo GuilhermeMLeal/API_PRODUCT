@@ -39,6 +39,10 @@ public class ProductController {
 		return repository.findByOrderByNameDesc();
 	}
 	
+	@GetMapping("/soma")
+	public ResponseEntity retorneSomaProducts() {
+		return ResponseEntity.ok(repository.somaProdutos());
+	}
 	
 	@PostMapping
 	public ResponseEntity registerProduct(@RequestBody @Valid RequestProduct data){
