@@ -16,6 +16,7 @@ import java.util.Optional;
 import com.br.ecommerce.domain.product.Product;
 import com.br.ecommerce.domain.product.ProductRepository;
 import com.br.ecommerce.domain.product.RequestProduct;
+import com.br.ecommerce.services.ProductServices;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -27,11 +28,12 @@ public class ProductController {
 	@Autowired
 	private ProductRepository repository;
 	
+	@Autowired
+	private ProductServices actions;
 
 	@GetMapping
-	public ResponseEntity<List<Product>> getAllProducts() {
-	    List<Product> allProducts = repository.findAll();
-	    return ResponseEntity.ok(allProducts);
+	public ResponseEntity<?> getAll() {
+		return actions.getAllEntities();
 	}
 	
 	@GetMapping("/names")
@@ -40,15 +42,13 @@ public class ProductController {
 	}
 	
 	@GetMapping("/soma")
-	public ResponseEntity retorneSomaProducts() {
+	public ResponseEntity<?> retorneSomaProducts() {
 		return ResponseEntity.ok(repository.somaProdutos());
 	}
 	
 	@PostMapping
-	public ResponseEntity registerProduct(@RequestBody @Valid RequestProduct data){
-		Product product = new Product(data);
-		repository.save(product);
-		return ResponseEntity.ok(product);
+	public ResponseEntity <?> registerProduct(@RequestBody @Valid Product data){
+		return ResponseEntity.ok(actions.registerEntity(data));
 	}
 	
 	@PutMapping("/{id}")
