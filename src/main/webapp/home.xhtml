@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head></h:head>
+<body>
+    <h1>Cadastro de Produtos</h1>
+    <h:form>
+    Nome: <h:inputText value="#{controllerHtml.product.nome}" />
+	E-mail: <h:inputText value="#{controllerHtml.product.email}" />
+	<h:commandButton action="#{controllerHtml.salvar}" value="Salvar" />
+
+</h:form>
+</body>
+</html>
